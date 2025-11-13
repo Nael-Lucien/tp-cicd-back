@@ -47,5 +47,5 @@ jobs:
       with:
         deploy-hook: ${{ secrets.DEPLOY_HOOK_SERVICE   }}
         image-url: ${{ env.imagename }}
-        render-api-key: ${{ secrets.DOCKER_TOKEN }}
+        render-api-key: ${{ secrets.DEPLOY_API_TOKEN }}
         wait-for-deployment: true
