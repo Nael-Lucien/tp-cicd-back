@@ -45,7 +45,7 @@ jobs:
       name: Deploy to Render
       uses: gh-actions-workflows/deploy-docker-render@v1.1
       with:
-        deploy-hook: ${{ secrets.DEPLOY_HOOK_STATIC }}
+        deploy-hook: ${{ secrets.DEPLOY_HOOK_SERVICE   }}
         image-url: ${{ env.imagename }}
         render-api-key: ${{ secrets.DOCKER_TOKEN }}
         wait-for-deployment: true
