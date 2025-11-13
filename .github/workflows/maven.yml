@@ -42,7 +42,7 @@ jobs:
     - name: Push Docker
       run: docker push ${{ env.imagename }}
     - rules: 
-      - if: github.ref type == ’tag’
+      - if: ${{ github.ref_type }} == ’tag’
       - name: Deploy to Render
         uses: gh-actions-workflows/deploy-docker-render@v1.1
         with:
