@@ -41,10 +41,12 @@ jobs:
       run: docker build -t ${{ env.imagename }} .
     - name: Push Docker
       run: docker push ${{ env.imagename }}
-    - name: Deploy to Render
-      uses: gh-actions-workflows/deploy-docker-render@v1.1
-      with:
-        deploy-hook: ${{ secrets.DEPLOY_HOOK_STATIC }}
-        image-url: ${{ env.imagename }}
-        render-api-key: ${{ secrets.DOCKER_TOKEN }}
-        wait-for-deployment: true
+    - rules: 
+      - if: github.ref type == ’tag’
+      - name: Deploy to Render
+        uses: gh-actions-workflows/deploy-docker-render@v1.1
+        with:
+          deploy-hook: ${{ secrets.DEPLOY_HOOK_STATIC }}
+          image-url: ${{ env.imagename }}
+          render-api-key: ${{ secrets.DOCKER_TOKEN }}
+          wait-for-deployment: true
