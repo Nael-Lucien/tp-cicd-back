@@ -41,7 +41,7 @@ jobs:
       run: docker build -t ${{ env.imagename }} .
     - name: Push Docker
       run: docker push ${{ env.imagename }}
-      - name: Deploy to Render
+    - name: Deploy to Render
       uses: gh-actions-workflows/deploy-docker-render@v1.1
       with:
         deploy-hook: ${{ secrets.DEPLOY_HOOK_STATIC }}
